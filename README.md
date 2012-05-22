@@ -12,15 +12,19 @@ Extensions to store filters, sorting and pages
             ),
         );
     }
-	
+<nowiki>	
 В Вашем экшене контролера заменить:
+
+
 		$model->unsetAttributes();  // clear any default values
 		if(isset($_GET['Articles']))
-			$model->attributes=$_GET['Articles']; 
+			$model->attributes=$_GET['Articles'];
+			
 на: 
+
 		if (isset($_GET['unsetFilter']) && $_GET['unsetFilter']=='yes') {
             $model->unsetFilters();
             $this->redirect(array('action_name'));
         }
-		
+</nowiki>		
 Когда нужно сбросить фильтры, просто передайте в Ваш экшн переменную 'unsetFilter'=>'yes' методом GET.
